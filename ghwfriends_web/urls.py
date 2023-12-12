@@ -22,6 +22,7 @@ from django.conf.urls import include
 urlpatterns = [
     path('', include('mainpage.urls')),
     path('admin/', admin.site.urls),
-    path('freeboard/', include('freeboard.urls'))
+    path('freeboard/', include('freeboard.urls')),
+    path('requestboard/', include('requestboard.urls'))
 
 ]
