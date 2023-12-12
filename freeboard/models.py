@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Post(models.Model):
+class Freeboard_Post(models.Model):
     title = models.CharField(max_length=40)
     #author = models.CharField(max_length=15)
     content = models.TextField()
@@ -12,3 +12,7 @@ class Post(models.Model):
 
     def __str__(self):
         return f'[{self.pk}] {self.title}'
+    
+
+    def get_absolute_url(self):
+        return f'/freeboard/{self.pk}'
