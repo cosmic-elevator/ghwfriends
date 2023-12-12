@@ -222,6 +222,7 @@ Temporary Items
 # Translations
 
 # Django stuff:
+migrations/
 
 # Flask stuff:
 
