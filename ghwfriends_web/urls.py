@@ -20,9 +20,9 @@ from django.conf.urls import include
 #from . import views
 
 urlpatterns = [
-    path('', include('mainpage.urls')),
+    path('', include('mainpage.urls'), name='mainpage'),
     path('admin/', admin.site.urls),
-    path('freeboard/', include('freeboard.urls')),
-    path('requestboard/', include('requestboard.urls'))
+    path('freeboard/', include('freeboard.urls'), name='freeboard'),
+    path('requestboard/', include('requestboard.urls'), name='requestboard')
 
 ]

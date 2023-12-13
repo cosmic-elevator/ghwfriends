@@ -4,7 +4,7 @@ from django.db import models
 
 class SongRequest_Post(models.Model):
     title = models.CharField(max_length=40)
-    #author = models.CharField(max_length=15)
+    author = models.CharField(max_length=15)
     content = models.TextField()
     created_date_time = models.DateTimeField(auto_now_add=True)
     updated_date_time = models.DateTimeField(auto_now=True)
