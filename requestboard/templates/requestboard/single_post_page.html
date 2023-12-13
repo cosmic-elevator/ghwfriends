@@ -4,10 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'requestboard/bootstrap/bootstrap.min.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'requestboard/css/bootstrap.min.css' %}" media="screen">
     <title>{{ post.title }} - 광고친구들</title>
 </head>
 <body>
+    <header> 
+        <div id="logo">
+            <a href="http://127.0.0.1:8000/"><img src="{% static 'ghwfriends_logo.png' %}" alt="광혜원고등학교 신청곡 게시판 광고친구들 로고"/></a>
+        </div>
+        <nav>
+            <ul id="topmenu">
+                <li><a href="http://127.0.0.1:8000/requestboard">신청곡 게시판</a></li>
+                <li><a href="http://127.0.0.1:8000/freeboard/">부자유 게시판</a></li>
+                <li><a href="https://mail.google.com/chat/u/0/#chat/space/AAAASr9d5FM">학교 행사</a></li>
+                <li><a href="https://docs.google.com/document/d/1T48ruB8A16MTT6I_icyzVEJRnEPoD1EIwGIYar-znU4/edit">만든 사람들</a></li>
+            </ul>
+        </nav>
+    </header>
     <h1>{{ post.title }}</h1>
     <h4>{{ post.created_date_time }}</h4>
     <p>{{ post.content }}</p>
