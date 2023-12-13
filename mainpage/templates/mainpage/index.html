@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./bootstrap4/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="style.css" rel="'stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'mainpage/css/bootstrap.min.css' %}" media="screen">
     <title>광고친구들</title>
 </head>
 <body>
     <header> 
         <div id="logo">
-            <h1>광고친구들</h1>
+            <a href="http://127.0.0.1:8000/"><img src="{% static 'ghwfriends_logo.png' %}" alt="광혜원고등학교 신청곡 게시판 광고친구들 로고"/></a>
         </div>
         <nav>
             <ul id="topmenu">
-                <li><a href="https://docs.google.com/spreadsheets/d/1u_XCR3KayBmut2Dfeh5QaeNXv_tDE1ZeF02mDtV1Wio/edit?usp=sharing">신청곡 게시판</a></li>
-                <li><a href="https://mail.google.com/chat/u/0/#chat/space/AAAA4oCtBvI">부자유 게시판</a></li>
+                <li><a href="http://127.0.0.1:8000/requestboard">신청곡 게시판</a></li>
+                <li><a href="http://127.0.0.1:8000/freeboard/">부자유 게시판</a></li>
                 <li><a href="https://mail.google.com/chat/u/0/#chat/space/AAAASr9d5FM">학교 행사</a></li>
                 <li><a href="https://docs.google.com/document/d/1T48ruB8A16MTT6I_icyzVEJRnEPoD1EIwGIYar-znU4/edit">만든 사람들</a></li>
             </ul>
@@ -30,9 +30,15 @@
         </div>
         <div class="mini_board">
             <button id="requestboard_go">신청곡 게시판 -> </button>
+            {% for p in requestboard_posts %}
+                <h4><a href="{{ p.get_absolute_url}}">{{ p.title }}</a></h4>
+            {% endfor %}
         </div>
         <div class="mini_board">
             <button id="freeboard_go">부자유 게시판 -> </button>
+            {% for p in freeboard_posts %}
+                <h4><a href="{{ p.get_absolute_url}}">{{ p.title }}</a></h4>
+            {% endfor %}
         </div>
     </div>       
     <footer>
