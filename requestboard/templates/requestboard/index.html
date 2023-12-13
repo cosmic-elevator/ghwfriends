@@ -21,7 +21,7 @@
             </ul>
         </nav>
     </header>
-    <h1>신청곡 게시판</h1>
+    <h3>신청곡 게시판</h3>
 
     {% for p in posts %} <!-- posts는 어디서 오는가? index.html과 연결되는 index 함수 내에서 render되는 접근 가능한 변수(...?)인 posts 에서 가져오는 건가-->
         <h2><a href="{{ p.get_absolute_url }}">{{ p }}</a></h2>
