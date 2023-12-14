@@ -33,7 +33,7 @@
     {% endif %}-->
 
     <div class="title-list">
-        {% if not paginator.count %}
+        {% if not page_object.object_list %}
             <h5>아직 게시물이 없습니다. </h5>
         {% else %}
             <!--<h5>게시물이 있습니다. </h5>-->
