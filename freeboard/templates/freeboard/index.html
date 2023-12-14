@@ -47,28 +47,37 @@
 
     <div class="pagination">
         <span class="step-links">
-            <button class="page-button" id="first-page"><a href="?page=1">처음</a></button>
+            <button class="page-button" id="first-page" onclick="pageButtonClickAction(1);">처음</button>
             {% if page_object.has_previous %}   
-                <button class="page-button" id="prev-page"><a href="?page={{ page_object.previous_page_number }}"><</a></button>
+                <button class="page-button" id="prev-page" onclick="pageButtonClickAction('{{ page_object.previous_page_number }}');"><</button>
             {% else %}
                 <button class="page-button" id="prev-page"><</button>
             {% endif %}
             
             {% for i in paginator.page_range %}
-                <button class="page-button" id="{{ i }}"><a href="?page={{ i }}">{{ i }}</a></button>
+                <button class="page-button" id="{{ i }}" onclick="pageButtonClickAction(id);"><a href="?page={{ i }}">{{ i }}</a></button>
             {% endfor %}
 
             {% if page_object.has_next %}
-                <button class="page-button" id="next-page"><a href="?page={{ page_object.next_page_number }}">></a></button>
+                <button class="page-button" id="next-page" onclick="pageButtonClickAction('{{ page_object.next_page_number }}');">></button>
             {% else %}
-                <button class="page-button" id="prev-page">></button>
+                <button class="page-button" id="next-page">></button>
             {% endif %}
-            <button class="page-button" id="last-page"><a href="?page={{ paginator.num_pages }}">끝</a></button>
+            <button class="page-button" id="last-page" onclick="pageButtonClickAction('{{ paginator.num_pages }}');">끝</button>
         </span>
     </div>
     
-
-    <script></script>
+    <script>
+        // 클릭 시 색 바꾸기
+        var current_page = '{{ page_object.number }}';
+        var elements = document.getElementsByClassName("page-button");
+        for (var i = 0, length = elements.length; i < length; i++) {
+            elements[i].style.backgroundColor = 'white';
+        }
+        
+        document.getElementById(current_page).style.backgroundColor = 'yellow';
+    </script>
+    <script src="{% static 'freeboard/js/pagebuttonclickaction.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
