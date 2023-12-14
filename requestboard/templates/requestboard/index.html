@@ -22,14 +22,49 @@
         </nav>
     </header>
     <h3>신청곡 게시판</h3>
-
-    {% if posts.exists %}
-        {% for p in posts %}
+    <br/>
+    <!--{% if page_object.exists %}
+        {% for p in page_object %}
             <h2><a href="{{ p.get_absolute_url }}">{{ p }}</a></h2>
         {% endfor %}
     {% else %}
         <h5>아직 게시물이 없습니다. </h5>
-    {% endif %}
+    {% endif %}-->
+
+    <div class="title-list">
+        {% if not pagination.count %}
+            <h5>아직 게시물이 없습니다. </h5>
+        {% else %}
+            <!--<h5>게시물이 있습니다. </h5>-->
+            {% for p in page_object %}
+                <h5><a href="{{ p.get_absolute_url }}">{{ p }}</a></h5>
+            {% endfor %}
+        {% endif %}
+    </div>
+    
+
+
+    <div class="pagination">
+        <span class="step-links">
+            <button class="page-button" id="first-page"><a href="?page=1">처음</a></button>
+            {% if page_object.has_previous %}   
+                <button class="page-button" id="prev-page"><a href="?page={{ page_object.previous_page_number }}"><</a></button>
+            {% else %}
+                <button class="page-button" id="prev-page"><</button>
+            {% endif %}
+            
+            {% for i in paginator.page_range %}
+                <button class="page-button" id="{{ i }}"><a href="?page={{ i }}">{{ i }}</a></button>
+            {% endfor %}
+
+            {% if page_object.has_next %}
+                <button class="page-button" id="next-page"><a href="?page={{ page_object.next_page_number }}">></a></button>
+            {% else %}
+                <button class="page-button" id="prev-page">></button>
+            {% endif %}
+            <button class="page-button" id="last-page"><a href="?page={{ paginator.num_pages }}">끝</a></button>
+        </span>
+    </div>
 
     
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
