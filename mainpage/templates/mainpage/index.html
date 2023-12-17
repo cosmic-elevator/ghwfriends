@@ -4,38 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'mainpage/css/styles.css' %}" media="screen">
     <link rel="stylesheet" href="{% static 'mainpage/css/bootstrap.min.css' %}" media="screen">
     <title>광고친구들</title>
 </head>
 <body>
     <header> 
         <div id="logo">
-            <a href="http://127.0.0.1:8000/"><img src="{% static 'ghwfriends_logo.png' %}" alt="광혜원고등학교 신청곡 게시판 광고친구들 로고"/></a>
+            <a href="{% url 'main' %}"><img src="{% static 'ghwfriends_logo.png' %}" alt="광혜원고등학교 신청곡 게시판 광고친구들 로고"/></a>
         </div>
         <nav>
             <ul id="topmenu">
-                <li><a href="http://127.0.0.1:8000/requestboard">신청곡 게시판</a></li>
-                <li><a href="http://127.0.0.1:8000/freeboard/">부자유 게시판</a></li>
+                <li><a href="{% url 'requestboard-list' %}">신청곡 게시판</a></li>
+                <li><a href="{% url 'freeboard-list' %}">부자유 게시판</a></li>
                 <li><a href="https://mail.google.com/chat/u/0/#chat/space/AAAASr9d5FM">학교 행사</a></li>
                 <li><a href="https://docs.google.com/document/d/1T48ruB8A16MTT6I_icyzVEJRnEPoD1EIwGIYar-znU4/edit">만든 사람들</a></li>
             </ul>
         </nav>
     </header>
     <div class="container">
-        <main id="events_banner">
-            
-        </main> 
+        <div class="slider-container">
+            <div class="slides">
+                <div class="slide"><img src="{% static 'ghwfriends_logo.png' %}" alt="이미지 1"></div>
+                <div class="slide"><img src="{% static 'ghwfriends_logo.png' %}" alt="이미지 2"></div>
+                <div class="slide"><img src="{% static 'ghwfriends_logo.png' %}" alt="이미지 3"></div>
+              <!-- 필요에 따라 이미지 경로 및 alt 속성을 변경하세요 -->
+            </div>
+            <div id="slider-buttons">
+                <button class="prev" onclick="prevSlide()">&#10094;</button>
+                <button class="next" onclick="nextSlide()">&#10095;</button>
+            </div>
+          </div>
+          
         <div id="playlist"> <!-- 오늘의 플리 사이드바 -->
             <a href="https://music.youtube.com">오늘의 플리</a>
         </div>
         <div class="mini_board">
-            <button id="requestboard" onclick="gotoBoard(id)">신청곡 게시판 -> </button>
+            <button id="requestboard" onclick="gotoReqBoard()">신청곡 게시판 -> </button>
             {% for p in requestboard_recent_five_posts %}
                 <h5><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h4>
             {% endfor %}
         </div>
         <div class="mini_board">
-            <button id="freeboard" onclick="gotoBoard(id)">부자유 게시판 -> </button>
+            <button id="freeboard" onclick="gotoFreeBoard()">부자유 게시판 -> </button>
             {% for p in freeboard_recent_five_posts %}
                 <h5><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h4>
             {% endfor %}
@@ -44,6 +55,41 @@
     <footer>
         <span>&#127279; 2023 광혜원고 정보과학주제탐구동아리 광코노조</span>
     </footer>
+
+    <script>
+        let currentSlide = 0;
+      
+        function showSlide(index) {
+            const slides = document.querySelector('.slides');
+            const slideWidth = document.querySelector('.slide').offsetWidth;
+            const newPosition = -index * slideWidth;
+      
+            slides.style.transform = `translateX(${newPosition}px)`;
+            currentSlide = index;
+        }
+      
+      
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % document.querySelectorAll('.slide').length;
+            showSlide(currentSlide);
+        }
+      
+      
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + document.querySelectorAll('.slide').length) % document.querySelectorAll('.slide').length;
+            showSlide(currentSlide);
+        }
+
+        function gotoReqBoard() {
+            location.href = "{% url 'requestboard-list' %}";
+        }
+
+
+        function gotoFreeBoard() {
+            location.href = "{% url 'freeboard-list' %}"
+        }
+      </script>
+      
     <script src="{% static 'mainpage/js/buttonclick.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

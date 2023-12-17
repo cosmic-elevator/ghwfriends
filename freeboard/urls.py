@@ -3,7 +3,7 @@ from django.conf.urls import include
 from freeboard import views
 
 urlpatterns = [
-    path('', views.index),
-    path('<int:pk>/', views.single_post_page),
-    path('write/', views.write)
+    path('', views.index, name='freeboard-list'),
+    path('<int:pk>/', views.single_post_page, name='free-post'),
+    path('write/', views.write, name='free-write')
 ]

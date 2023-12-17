@@ -4,6 +4,6 @@ from django.conf.urls import include
 from mainpage import views
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.index, name='main'),
 
 ]
