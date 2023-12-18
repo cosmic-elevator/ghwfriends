@@ -10,19 +10,32 @@
 </head>
 <body>
     <header> 
-        <div id="logo">
-            <a href="{% url 'main' %}"><img src="{% static 'ghwfriends_logo.png' %}" alt="광혜원고등학교 신청곡 게시판 광고친구들 로고"/></a>
-        </div>
-        <nav>
-            <ul id="topmenu">
-                <li><a href="{% url 'requestboard-list' %}">신청곡 게시판</a></li>
-                <li><a href="{% url 'freeboard-list' %}">부자유 게시판</a></li>
-                <li><a href="https://mail.google.com/chat/u/0/#chat/space/AAAASr9d5FM">학교 행사</a></li>
-                <li><a href="https://docs.google.com/document/d/1T48ruB8A16MTT6I_icyzVEJRnEPoD1EIwGIYar-znU4/edit">만든 사람들</a></li>
-            </ul>
-        </nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a href="{% url 'main' %}"><img src="{% static 'ghwfriends_logo.png' %}" alt="광혜원고등학교 신청곡 게시판 광고친구들 로고"/></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'requestboard-list' %}">신청곡 게시판<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'freeboard-list' %}">부자유 게시판</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.instagram.com/ghwhs.sc/">학교 행사</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://docs.google.com/document/d/1T48ruB8A16MTT6I_icyzVEJRnEPoD1EIwGIYar-znU4/edit">만든 사람들</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
     </header>
-    <div class="container">
+
+    <div id="main-contents" class="container">
         <div class="slider-container">
             <div class="slides">
                 <div class="slide"><img src="{% static 'ghwfriends_logo.png' %}" alt="이미지 1"></div>
@@ -35,22 +48,23 @@
                 <button class="next" onclick="nextSlide()">&#10095;</button>
             </div>
           </div>
-          
-        <div id="playlist"> <!-- 오늘의 플리 사이드바 -->
-            <a href="https://music.youtube.com">오늘의 플리</a>
+
+
+        <div id="mini-boards" class="container">
+          <div class="mini-board" class="container">
+              <button id="requestboard" class="go-btn" onclick="gotoReqBoard()">신청곡 게시판 -> </button>
+              {% for p in requestboard_recent_five_posts %}
+                  <h5><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h4>
+              {% endfor %}
+          </div>
+          <div class="mini-board" class="container">
+              <button id="freeboard" class="go-btn" onclick="gotoFreeBoard()">부자유 게시판 -> </button>
+              {% for p in freeboard_recent_five_posts %}
+                  <h5><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h4>
+              {% endfor %}
+          </div>
         </div>
-        <div class="mini_board">
-            <button id="requestboard" onclick="gotoReqBoard()">신청곡 게시판 -> </button>
-            {% for p in requestboard_recent_five_posts %}
-                <h5><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h4>
-            {% endfor %}
-        </div>
-        <div class="mini_board">
-            <button id="freeboard" onclick="gotoFreeBoard()">부자유 게시판 -> </button>
-            {% for p in freeboard_recent_five_posts %}
-                <h5><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h4>
-            {% endfor %}
-        </div>
+        
     </div>       
     <footer>
         <span>&#127279; 2023 광혜원고 정보과학주제탐구동아리 광코노조</span>

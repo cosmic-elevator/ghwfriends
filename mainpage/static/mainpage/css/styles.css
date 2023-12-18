@@ -3,6 +3,25 @@ body {
     font-family: Arial, sans-serif;
   }
 
+#mini-boards {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.mini-board {
+  display: inline-flex;
+}
+
+
+.go-btn {
+  background-color: #FCDB5F;
+  text-align: center;
+  padding: 20px 80px;
+  margin: 10px 10px;
+  font-size: 25px;
+}
+
 
 .slider-container {
     position: relative;
@@ -37,8 +56,8 @@ body {
     transform: translateY(-50%);
     font-size: 24px;
     cursor: pointer;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: transparent;
     border: none;
     padding: 10px;
     outline: none;
@@ -47,3 +66,86 @@ body {
 
   .prev { left: 10px; }
   .next { right: 10px; }
+
+
+
+  body,
+  html {
+    overflow-x:hidden;
+  }
+  
+  body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+    color: #1c1b1b;
+  }
+  
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  
+  ul li {
+    font-size: 17px;
+    line-height: 1.59;
+  }
+  
+  a { 
+    text-decoration: none;
+    color: #2f2f2f;  
+  }
+  
+  a:hover,
+  a:focus {
+    outline: none;
+    text-decoration: none;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-top: 0;
+  }
+  
+  
+  h1 {
+    font-size: 38px;
+  }
+  
+  h2 {  
+    font-size: 32px; 
+    line-height: 1.13; 
+  }
+  
+  h3 {  
+    font-size: 26px;  
+  }
+  
+  h4 {  
+    font-size: 22px;  
+  }
+  
+  h5 {  
+    font-size: 20px;  
+  }
+  
+  h6 {  
+    font-size: 18px;  
+  }
+  
+  img {
+    border: none;
+    max-width: 100%;
+  }
+
+
+  
+
+
