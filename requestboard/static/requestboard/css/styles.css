@@ -13,86 +13,30 @@ body {
   padding-right: 100px;
 }
 
-#mini-boards {
-  display: flex;
-  justify-content: center;
-}
 
 
-.mini-board {
-  display: inline;
-}
-
-.minipost-titles {
-  min-height: 100px;
-}
-
-
-.go-btn {
-  background-color: #FCDB5F;
-  text-align: center;
-  padding: 16px 90px;
-  margin: 10px 10px;
-  border-color: #f5cb36;
-  font-size: 25px;
+#post-write-btn {
+  border-color: transparent;
   display: inline-block;
+  padding: 1px 7px;
+
+  color: black;
+
 }
 
-.go-btn:hover {
-  background-color: #f5cb36;
+#writebutton {
+  display: flex;
+  justify-content: flex-end;
 }
 
-
-.minipost-titles {
-  margin: 5px 15px;
-  text-align: left;
+.pagination {
+   display: flex;
+   justify-content: center;
 }
 
-
-.slider-container {
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    margin: auto;
-    overflow: hidden;
+.page-button {
+  border: none;
 }
-
-
-.slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-  }
-
-
-  .slide {
-    min-width: 100%;
-    box-sizing: border-box;
-  }
-
-
-  .slide img {
-    width: 100%;
-    height: auto;
-  }
-
-
-  .prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 24px;
-    cursor: pointer;
-    color: black;
-    background-color: transparent;
-    border: none;
-    padding: 10px;
-    outline: none;
-  }
-
-
-  .prev { left: 10px; }
-  .next { right: 10px; }
-
 
 
   body,
@@ -121,6 +65,7 @@ body {
   a { 
     text-decoration: none;
     color: #2f2f2f;  
+    margin: 0px;
   }
 
   a:link,
