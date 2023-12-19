@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,13 +21,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = 'django-insecure-u54d7(v=wmm*7y)%3c1esb8cwfcswnkk49q13_u-cy5q$c1m14'
 SECRET_KEY = 'django-insecure-u54d7(v=wmm*7y)%3c1esb8cwfcswnkk49q13_u-cy5q$c1m14'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
 DEBUG = True
+#ALLOWED_HOSTS = []
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
 # Application definition
 
@@ -80,8 +83,12 @@ WSGI_APPLICATION = 'ghwfriends_web.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ghwfriends_db',
+        'USER': 'choisuzy12',
+        'PASSWORD': 'rosesuzy12!',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -128,3 +135,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+STATICFILES_DIRS = [BASE_DIR/'static',]
+STATIC_ROOT = BASE_DIR/'staticfiles'
