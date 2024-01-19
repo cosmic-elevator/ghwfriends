@@ -5,26 +5,21 @@
 {% block main_area %}
         <div class="slider-container">
             <div class="slides">
-                <div class="slide0" class="slide-all"><img src="{% static 'event_1.png' %}" alt="이미지 1"></div>
-                <div class="slide1" class="slide-all"><img src="{% static 'event_2.png' %}" alt="이미지 2"></div>
-                <div class="slide2" class="slide-all"><img src="{% static 'event_3.png' %}" alt="이미지 3"></div>
+                <!--<div class="slide"><img src="{% static 'event_1.jpeg' %}" alt="이미지 1"></div>-->
+                <div class="slide"><img src="{% static 'event_2.jpeg' %}" alt="이미지 2"></div>
+                <div class="slide"><img src="{% static 'event_3.jpeg' %}" alt="이미지 3"></div>
               <!-- 필요에 따라 이미지 경로 및 alt 속성을 변경하세요 -->
             </div>
             <div id="slider-buttons">
-                <button class="prev">&#10094;</button>
-                <button class="next">&#10095;</button>
+                <button class="prev" onclick="prevSlide()">&#10094;</button>
+                <button class="next" onclick="nextSlide()">&#10095;</button>
             </div>
-          </div> 
-
-        <div>
-            <div class="event-p"><img src="{% static '신청 이벤트.svg' %}" alt="신청곡 신청"></div>
-            <a class="plus" class="nav-link" href="{% url 'requestboard-list' %}"><img src="{% static '추가 버튼.svg' %}" alt="신청곡 바로가기"></a>
-            <div class="playlist"><img src="{% static '플리.svg' %}"></div>
           </div>
-      
+
+
         <div id="mini-boards" class="container mt-3">
-          <div class="mini-board" id="requestboard">
-              <a class="go-btn" class="nav-link" href="{% url 'requestboard-list' %}">- 신청곡 -</a>
+          <div class="mini-board">
+              <button id="requestboard" class="go-btn" onclick="gotoReqBoard()">신청곡 게시판 -> </button>
               <div class="minipost-titles">
                 {% for p in requestboard_recent_five_posts %}
                     <h5><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h4>
@@ -32,8 +27,8 @@
               </div>
               
           </div>
-          <div class="mini-board" id="freeboard">
-              <a class="go-btn" class="nav-link" href="{% url 'freeboard-list' %}">- 부자유 게시판 -</a>
+          <div class="mini-board">
+              <button id="freeboard" class="go-btn" onclick="gotoFreeBoard()">부자유 게시판 -> </button>
               <div class="minipost-titles">
                 {% for p in freeboard_recent_five_posts %}
                     <h5><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h4> 

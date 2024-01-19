@@ -4,10 +4,10 @@
 {% block main_area %}
     <div id="board-title">
         <h2>부자유 게시판</h2>
-        <h6 style="font-family: 'Nanum Gothic Coding', monospace;">광혜원고 학생들과 자유롭지 않게 소통할 수 있는 공간입니다. </h6>
+        <h6>광혜원고 학생들과 자유롭지 않게 소통할 수 있는 공간입니다. </h6>
     </div>
     <div id="writebutton">
-        <button id="post-write-btn" class="btn bg-color" onclick="writeGo()" style="background-color: #F4F5F6; color: #3B5266;">Write</button>
+        <button id="post-write-btn" class="btn bg-color" onclick="writeGo()" style="background-color: #FCDB5F;">Write</button>
     </div>
     <br/>
     <!--{% if page_object.exists %}
@@ -18,7 +18,7 @@
         <h5>아직 게시물이 없습니다. </h5>
     {% endif %}-->
 
-    <div id="title-list" class="container mb-5 bg-light" style="min-height: 300px; padding-top: 20px; padding-left: 20px;">
+    <div id="title-list" class="container mb-5 bg-light" style="min-height: 250px; padding-top: 20px; padding-left: 20px;">
         {% if not page_object.object_list %}
             <h5>아직 게시물이 없습니다. </h5>
         {% else %}
