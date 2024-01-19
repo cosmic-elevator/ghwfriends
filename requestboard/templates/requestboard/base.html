@@ -6,34 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'requestboard/css/styles.css' %}" media="screen">
     <link rel="stylesheet" href="{% static 'mainpage/css/bootstrap.min.css' %}" media="screen">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap" rel="stylesheet">
     <title>광고친구들</title>
 </head>
 <body>
     <header> 
-        <nav class="navbar navbar-expand-lg navbar-light bg-color" style="background-color: #FCDB5F;">
-          <a id="logo" href="{% url 'main' %}"><img src="{% static 'ghwfriends_logo.png' %}" alt="광혜원고등학교 신청곡 게시판 광고친구들 로고"/></a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-color" style="background-color: #ffffff;">
+          <a id="logo" href="{% url 'main' %}"><img src="{% static 'ghwfriends_logo.svg' %}" alt="광혜원고등학교 신청곡 게시판 광고친구들 로고"/></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-text" class="nav-link" href="{% url 'requestboard-list' %}">신청곡 게시판<span class="sr-only">(current)</span></a>
+              <ul class="navbar-nav" class="navbar-nav mr-auto">
+                <li class="nav-item" class="nav-item active">
+                  <a class="nav-text" class="nav-link" id="item-a" href="{% url 'requestboard-list' %}" style="color: #094EFF">신청곡<span class="sr-only">(current)</span></a>
+                </li>
+                <li class ="nav-item">
+                  <a class="nav-text" class="nav-link" id="item-a" href="{% url 'freeboard-list' %}">부자유 게시판</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-text" class="nav-link" href="{% url 'freeboard-list' %}">부자유 게시판</a>
+                  <a class="nav-text" class="nav-link" id="item-a" href="https://www.instagram.com/ghwhs.sc/" target="_blank">학교 일정</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-text" class="nav-link" href="https://www.instagram.com/ghwhs.sc/">학교 행사</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-text" class="nav-link" href="https://docs.google.com/document/d/1T48ruB8A16MTT6I_icyzVEJRnEPoD1EIwGIYar-znU4/edit">만든 사람들</a>
+                  <a class="nav-text" class="nav-link" id="item-b"><img src="{% static 'ghwfriends_The Makers.svg' %}" alt="광혜원고등학교 사이트 만든 이"/></a>
                 </li>
               </ul>
             </div>
           </nav>
     </header>
+
+    <div id="popup" class="popup">
+      <span id="close-btn" style="position: absolute; top: 0; right: 0; padding: 10px;">&times;</span>
+      <img class="popup-img" src="{% static '만든이(광코노조).svg' %}" alt="팝업 만든 이" style="display: block; max-width: 100%;">
+    </div>
 
     <div id="main-contents" class="container mb-5 mt-5">
 
@@ -41,7 +49,8 @@
 
         {% endblock %}
 
-    </div>       
+    </div>   
+        
     <footer>
         <span id="rights" style="display: flex; justify-content: center;">Copyleft. 2023 광혜원고 정보과학주제탐구동아리 광코노조</span>
     </footer>
