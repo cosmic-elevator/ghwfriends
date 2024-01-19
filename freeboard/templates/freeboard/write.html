@@ -5,14 +5,14 @@
 
 {% block main_area %}
 
-    <h4 style="font-family: 'Nanum Gothic Coding', monospace;">부자유 게시판</h4>
+    <h4>부자유 게시판</h4>
     <h2>글 작성</h2>
     <div>
         <form action="" method="post">
             {{ form | crispy }}
             {% csrf_token %}
             <div class="mt-5" style="display: flex; justify-content: center;">
-                <button type="submit" class="btn bg-color" style="background-color: #F4F5F6; color: #3B5266;">글쓰기</button>
+                <button type="submit" class="btn bg-color" style="background-color: #FCDB5F;">글쓰기</button>
             </div>
         </form> 
     </div>
